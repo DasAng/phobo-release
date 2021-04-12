@@ -22,6 +22,7 @@ Phobo is a standalone executable that can be run from the command line and it wi
     - [Migoi - HTML report](docs/migoi.md)
     - [Templates](docs/templates.md)
     - [Tags](#tags)
+    - [Debugging](#debugging)
 
 ---
 
@@ -89,3 +90,7 @@ Phobo supports a few special tags that are reserved by Phobo. These tags will ha
 - `@clearLocalStorage`: This tag can be added to any scenario. When a scenario has this tag it will automatically trigger a cleanup step that clears all local storage data for a browser page whenever the scenario has finished. It can be used to for example always clean up local storage after browsing a site.
 
 - `@cleanupAwsResources`: This tag can be added to any scenario. When a scenario has this tag it will automatically trigger a cleanup step at the end of the scenario that deletes all AWS resources created by any actions in the scenario.
+
+# Debugging
+
+Phobo can be set to run in debug mode, which can be useful for inspecting variables and stepping through code. See [here](docs/debugging.md) for more information.

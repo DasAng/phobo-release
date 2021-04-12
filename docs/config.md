@@ -29,6 +29,10 @@ The configuration file is a JSON file with the following structure:
    "pluginsDir": "plugins",
    "update": {
       "manifestUrl": ""
+   },
+   "debugger": {
+      "address": "ws://localhost",
+      "port": 7489
    }
 }
 ```
@@ -73,3 +77,11 @@ The configuration file is a JSON file with the following structure:
 - update.manifestUrl:
 
     This url of the manifest file used to retrieve latest version. This is used by Phobo to determine whether a newer version is available for download. When you the option **phobo.exe --update** it will check the manifest url for a newer version of Phobo and download it. You should normally not override this value but use whatever default value that is present, since a wrong manifest url will prevent Phobo from being able to update to newer version.
+
+- debugger.address:
+
+   This is the address of the debugger server to connect to if running in debug mode.
+
+- debugger.port:
+
+   This is the port number of the debugger server to connect to if running in debug mode.

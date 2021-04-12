@@ -109,3 +109,29 @@ Phobo supports the following option flags:
     ```shell
     phobo.exe myfeature.feature --json myreport.json
     ```
+
+- **--attach-dbg**:
+
+    Enable to connect to debugger server to set breakpoint and step through code
+
+    ```shell
+    phobo.exe myfeature.feature --attach-dbg
+    ```
+
+- **--b \<line_number>**:
+
+    Sets a breakpoint at the specified line number. You can use this option several times to set multiple breakpoints.
+    Use this flag in conjunction with the `--attach-dbg` flag to enable debugging the code.
+
+    ```shell
+    phobo.exe myfeature.feature --b 19 --b 22 --attach-dbg
+    ```
+
+- **--port \<port>**:
+
+    Specify the port number of the debugger server to connect to. If you don't specify this value, then the default value specified in the configuration file will be used.
+    This flag is intended for use together with the `--attach-dbg` flag to enable debugging.
+
+    ```shell
+    phobo.exe myfeature.feature --attach-dbg --port 7899
+    ```
