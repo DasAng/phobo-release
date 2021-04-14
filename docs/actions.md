@@ -81,3 +81,11 @@ This is a comprehensive list of actions offered by Phobo.
 - [Set environment variable](misc_actions.md#set-environment-variable)
 - [Export](misc_actions.md#export)
 - [Get environment variable](misc_actions.md#get-environment-variable)
+
+# Conditional actions
+
+- [Repeat until](condition_actions.md#repeat-until)
+
+# Match actions
+
+- [Match result](match_actions.md#match-result)

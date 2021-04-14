@@ -1,6 +1,6 @@
 # AWS Stepfunctions actions
 
-- [List step functions](a#list-step-functions)
+- [List step functions](#list-step-functions)
 - [Describe step function](#describe-step-function)
 
 ---

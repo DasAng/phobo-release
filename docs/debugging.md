@@ -73,6 +73,7 @@ interface DebuggerMessage {
     - **3**: Stop. This message can be sent to Phobo from a debugger server to tell Phobo to stop its execution and terminate.
     - **4**: Breakpoint. This message is sent by Phobo to the debugger server that indicates phobo has paused execution due to a breakpoint.
     - **5**: Breakpoint changed. This message can be sent to Phobo from a debugger server to tell Phobo to update its breakpoints with the new changed breakpoints.
+    - **6**: Step info. This message is sent by Phobo to debugger server to notify of the steps that have executed and the result of the step.
 
 - `id`: A unique identifier for the message. A debugger server must always send a response to any message received by Phobo with the same id as the one received. For example a debugger server receives a message from Phobo indicating a breakpoint has been hit. Now the debugger server can send a response back telling Phobo to continue by setting the message type to **1** but setting the id to the same id received.
 - `data`: Additional custom data related to the specific message type. For example for a message type of **4** (breakpoint) the data field will contain a list of line numbers indicating the new breakpoints for Phobo to set.
@@ -98,6 +99,7 @@ Phobo supports the following message types
 - [Continue message](#continue-message)
 - [Breakpoint changed message](#breakpoint-changed-message)
 - [Stop message](#stop-message)
+- [Step info message](#step-info-message)
 
 ### Breakpoint message
 
@@ -208,8 +210,6 @@ The message looks like the following:
 
 ### Stop message
 
-This message is reserved for future use.
-
 This message can be sent by debugger server to stop Phobo execution.
 
 The message looks like the following:
@@ -225,6 +225,50 @@ The message looks like the following:
 - `type`: This value is always set to 3.
 - `id`: A unique identifier for this message
 - `data`: Not used
+
+### Step info message
+
+This message is sent by Phobo to debugger server to notify about the step being executed and info about the step.
+
+The message looks like the following:
+
+```json
+{
+    "type": 6,
+    "id": "xxxx-xxxx-xxx",
+    "data": {
+        "line": 10,
+        "column": 5,
+        "status": 1,
+        "message": "",
+        "text": "this is a test step",
+        "feature": "Test feature",
+        "scenario": "Test scenario",
+        "result": string|number|boolean|object|array,
+        "attachments": [
+            {
+                "body": string,
+                "mediatype": "application/json"
+            }
+        ]
+    } 
+}
+```
+
+- `type`: This value is always set to 3.
+- `id`: A unique identifier for this message
+- `data`: This field is an object containing the following properties:
+    - `line`: The line number of the action/step
+    - `column`: The column number of the action/step
+    - `status`: If the value is 1 then the action/step has been executed successfully otherwise the value will be 6 if it failed.
+    - `message`: If an error occurred the reason will be in this field.
+    - `feature`: The name of feature being executed
+    - `scenario`: The name of the active scenario
+    - `text`: The actual action/step text, eg. "I sign in to website"
+    - `result`: This is the result of the executed action/step. The value can be a string, number, boolean, object or array.
+    - `attachments`: This is an array of attachments for the executed action/step.
+        - `body`: The value of the attached data
+        - `mediatype`: The type of the attached data. Eg. "application/json", "text/plain" etc.
 
 # Debugger server
 
