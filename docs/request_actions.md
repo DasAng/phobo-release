@@ -67,35 +67,35 @@ Example of usage:
 
 - Make a HTTP get request for https://myapi.com/users/ 
 
-    > http get \`https://myapi.com/users/\`
+    > http get \`https://myapi.com/users` 
 
 - Make a HTTP get request for https://myapi.com/users/ and set headers
 
-    > http get \`https://myapi.com/users/\` headers=\`content-type:application/json,content-length:1024\`
+    > http get \`https://myapi.com/users\` headers=\`content-type:application/json,content-length:1024\`
 
 - Make a HTTP head request for https://myapi.com/users/ 
 
-    > http head \`https://myapi.com/users/\`
+    > http head \`https://myapi.com/users`
 
 - Make a HTTP delete request for https://myapi.com/users/ 
 
-    > http delete \`https://myapi.com/users/\`
+    > http delete \`https://myapi.com/users`
 
 - Make a HTTP options request for https://myapi.com/users/ 
 
-    > http options \`https://myapi.com/users/\`
+    > http options \`https://myapi.com/users`
 
 - Make a HTTP post request for https://myapi.com/users/ 
 
-    > http options \`https://myapi.com/users/\`
+    > http options \`https://myapi.com/users`
 
 - Make a HTTP put request for https://myapi.com/users/ 
 
-    > http put \`https://myapi.com/users/\`
+    > http put \`https://myapi.com/users`
 
 - Make a HTTP patch request for https://myapi.com/users/ 
 
-    > http patch \`https://myapi.com/users/\`
+    > http patch \`https://myapi.com/users`
 
 ## Http request with body
 
