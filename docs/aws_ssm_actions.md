@@ -21,7 +21,7 @@ The matching is case insensitive and can appear anywhere within the sentence.
 ```shell
 aws ssm get parameter <path>
 ```
-- **`path`**: the parameter store path to retrieve the value from. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`path`**: the parameter store path to retrieve the value from. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The reponse JSON will have the following structure:
 

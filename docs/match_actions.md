@@ -1,24 +1,18 @@
-# Conditional actions
+# Match actions
 
-- [Repeat until](#repeat-until)
+- [Match result](#match-result)
 
 
 ---
 
-## Repeat until
+## Match result
 
-This action will continue to repeat a specified action until a specified condition has been met.
-
-The action to repeat is specified inside a docstring and must be one of the avaialable Phobo actions. This action will be repeated up to a maximum specified number of times and if a condition has been fullfilled then it will stop. The condition is also another Phobo action that is specified inside a docstring.
-
-The way the condition checking is working is that the action for the condition is performed and if no assertion or exceptions occured then the condition is considered fullfilled and the repeat stops. Otherwise the action is repeated and the condition is checked again until the max number of repeat has been reached.
-
-During each repeat the action will wait for the specified interval in milliseconds before attempting again.
+This action will perform a match of the last result from a previous action against the specified value using one of the matching operator *less,equal,greater,greater or equal, less or equal*.
 
 `Regex`:
 
 ```shell
-/repeat until interval=(\d+) count=(\d+)/i
+/match result (not)?\s*(greater or equal|less or equal|less|equal|greater|>=|<=|=|>|<) (.+)/i
 ```
 
 `match signature`:
@@ -26,32 +20,64 @@ During each repeat the action will wait for the specified interval in millisecon
 The matching is case insensitive and can appear anywhere within the sentence.
 
 ```shell
-repeat until interval=<interval> count=<count>
-"""
-action=<action>
-condition=<condition>
-[actionContent=<actionContent>]
-[conditionContent=<conditionContent>]
-"""
+match result [not] <operator> <value>
 ```
 
-- **`interval`**: this parameter is required and is the wait interval in milliseconds between each repeated call
-- **`count`**: this parameter is required and is the maximum number of repeat to perform before giving up.
-- **`action`**: this parameter is inside a docstring and specifies the actual action to repeat. eg. it must be one of the valid Phobo actions available.
-- **`condition`**: this parameter is inside a docstring and specified the actual condition that must be met. It must be one of the valid Phobo actions available.
-- **`actionContent`**: this parameter is inside a docstring. This parameter is optional and can be used to pass additioanl content as a docstring to the action specified in `action`.
-- **`conditionContent`**: this parameter is inside a docstring. This parameter is optional and can be used to pass additioanl content as a docstring to the action specified in `condition`.
+- **`not`**: this parameter is optional and if specified it will negate the matching operator.
+- **`operator`**: this parameter is required and can be one of the following values:
+    - *less*: will check if the result is less than the specified value
+    - *<*: alias for *less*
+    - *greater*: will check if the result is greater than the specified value
+    - *>*: alias for *greater*
+    - *equal*: will check if the result is equal to the specified value
+    - *=*: alias for *equal*
+    - *less or equal*: will check if the result is less than or equal to the specified value
+    - *<=*: alias for *less or equal*
+    - *greater or equal*: will check if the result is greater than or equal to the specified value
+    - *>=*: alias for *greater or equal*
+- **`value`**: this parameter is required and is the value to match against. It can be a number, string, object, array. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter
 
-The result of the action is any value returned by the repeated action
+The result of the action is the boolean value true otherwise it will throw if failed to match
 
 Example of usage:
 
-- Call the action *aws ssm get parameter /test* repeatedly for maximum 2 times with interval of 5 seconds. Until the condition specified by the action *jmespath match* has been met
+- Match the result of previous action is equal to number 10
 
-    > Then repeat until interval=5000 count=2  
-    > """  
-    > action=aws ssm get parameter /test  
-    > condition=jmespath match Parameter.{Name:Name,Type:Type,Value:Value,Version:Version,ARN:ARN,DataType:DataType}  
-    > conditionContent={ "Name": "/test", "Type": "String", "Value": "test", "Version": 1,"ARN": "arn:aws:ssm:eu-central-1:362168270949:parameter/test","DataType":"text"}  
-    > """  
+    > match result equal 10
+    > match result = 10
+
+- Match the result of previous action is not equal to number 10
+
+    > match result not equal 10
+    > match result not = 10
+
+- Match the result of previous action is equal to object { "age": 10 }
+
+    > match result = {"age": 10}
+    > match result equal {"age": 10}
+
+- Match the result of previous action is not equal to object { "age": 10 }
+
+    > match result not = {"age": 10}
+    > match result not equal {"age": 10}
+
+- Match the result of previous action less than number 10
+
+    > match result less 10
+    > match result < 10
+
+- Match the result of previous action less or equal to number 10
+
+    > match result less or equal 10
+    > match result <= 10
+
+- Match the result of previous action greater or equal to number 10
+
+    > match result greater or equal 10
+    > match result >= 10
+
+- Match the result of previous action equal to array [1,2,{"age": 10}]
+
+    > match result equal [1,2,{"age":10}]
+    > match result = [1,2,{"age":10}]
 

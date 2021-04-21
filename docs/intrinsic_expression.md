@@ -122,6 +122,7 @@ Not all actions and their parameters supports intrinsic expression, so you will 
 - [<$cognitoUsers$>](<$cognitoUsers.[jmespath]$>)
 - [<$env$>](#<$env.[variable]$>)
 - [<$steps$>](#<$steps.[index]$>)
+- [<$var$>](#<$var.[name]$>)
 
 ## <$result$>
 
@@ -321,3 +322,16 @@ Then export MYVAR=<$steps.0$>
 ```
 
 Then the index of the first step is 0 and the second step is 1 etc. So in the example case above we retrieve the result of the first step by calling `<$steps.0$>`
+
+## <$var.[name]$>
+
+This intrinsic function will return the local variable named `[name]`. Variables can be created using the action [variable](misc_actions.md#variable). This function enables you to refer to the variable by its name.
+
+For example lets say you have the following feature file which creates a variable named *address*. You can refer to the variable like the following:
+
+```gherkin
+Given variable name=`address` value=`sesam street 14`
+Then print `<$var.address$>`
+```
+
+

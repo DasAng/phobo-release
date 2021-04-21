@@ -27,7 +27,7 @@ aws ssm get parameter <path>
 <sqlstatement>
 """
 ```
-- **`sqlstatement`**: the sql statement must be inside a docstring. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`sqlstatement`**: the sql statement must be inside a docstring. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The reponse will be converted to JSON and have the following structure:
 

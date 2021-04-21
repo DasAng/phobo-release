@@ -29,8 +29,8 @@ The matching is case insensitive and can appear anywhere within the sentence. Th
 aws cognito create user: userpoolid=`<userpoolid>` username=`<username>` [prefix=<desireddeliverymediums>] [forcealiascreation=<forcealiascreation>] [messageaction=<messageaction>] [temporarypassword=`<temporarypassword>`] [userattributes=`<userattributes>`] [validationdata=`<validationdata>`]
 ```
 
-- **`userpoolid`**: the user pool ID for the user pool where the user will be created. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`username`**: the username for the user. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`userpoolid`**: the user pool ID for the user pool where the user will be created. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`username`**: the username for the user. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 - `desireddeliverymediums`: specify "email" if email will be used to send the welcome message. Specify "sms" if the phone number will be used. Specify "both" if both should be used. This parameter is optional.
 - `forcealiascreation`: this parameter is only used if the *phone_number_verified* or *email_verified* attribute is set to **true**. Otherwise, it is ignored.
 If this parameter is set to **true** and the phone number or email address specified in the *userattributes* parameter already exists as an alias with a different user, the action call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.
@@ -47,7 +47,7 @@ If this parameter is set to **false**, the action throws an *AliasExistsExceptio
         /* more items */
     ]
     ```
-    You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter. This parameter is optional.
+    You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter. This parameter is optional.
 - `validationdata`: the user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain. The format is a JSON object like the following:
     ```json
     ValidationData: [
@@ -58,7 +58,7 @@ If this parameter is set to **false**, the action throws an *AliasExistsExceptio
         /* more items */
     ]
     ```
-    You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter. This parameter is optional.
+    You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter. This parameter is optional.
 
 The result of the action is a JSON response looking like the following:
 
@@ -138,8 +138,8 @@ The matching is case insensitive and can appear anywhere within the sentence. Th
 aws cognito delete user: userpoolid=`<userpoolid>` username=`<username>`
 ```
 
-- **`userpoolid`**: the user pool ID for the user pool where the user will be deleted. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`username`**: the username of the user to be deleted. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`userpoolid`**: the user pool ID for the user pool where the user will be deleted. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`username`**: the username of the user to be deleted. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The action does not return any JSON result.
 
@@ -197,7 +197,7 @@ The matching is case insensitive and can appear anywhere within the sentence. Th
 aws cognito create userpool: poolname=`<poolname>` <options>
 ```
 
-- **`poolname`**: the name of the userpool. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`poolname`**: the name of the userpool. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 - **`docstring`**: you can pass additional options as a json object in **docstring**. The complete option format looks like the following:
 
     ```json
@@ -486,7 +486,7 @@ The matching is case insensitive and can appear anywhere within the sentence
 aws cognito delete userpool: userpoolid=`<userpoolid>`
 ```
 
-- **`userpoolid`**: the user pool ID for the user pool where the user will be deleted. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`userpoolid`**: the user pool ID for the user pool where the user will be deleted. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The action does not return any JSON result.
 
@@ -519,9 +519,9 @@ The matching is case insensitive and can appear anywhere within the sentence
 aws cognito set user password: userpoolid=`<userpoolid>` username=`<username>` password=`<password>` permanent=<permanent>
 ```
 
-- **`userpoolid`**: the user pool ID wher the user is located in. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`username`**: the user name. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`password`**: the password for the user. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`userpoolid`**: the user pool ID wher the user is located in. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`username`**: the user name. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`password`**: the password for the user. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 - **`permanent`**: *true* if the password is permanent, *false* if it is temporary
 
 The action does not return any JSON result.
@@ -563,12 +563,12 @@ aws cognito initiate auth: authflow=`<authflow>` clientid=`<clientid>` [authpara
     - USER_PASSWORD_AUTH
     - ADMIN_USER_PASSWORD_AUTH
     
-    You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`clientid`**: the app client ID. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- `authparameters`: the authentication parameters. These are inputs corresponding to the *authflow* that you are invoking. The required values depend on the value of *authflow*. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- `clientmetadata`: a map of custom key-value pairs that you can provide as input for certain custom workflows that this action triggers. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- `analyticsendpointid`: the Amazon Pinpoint analytics metadata for collecting metrics for InitiateAuth calls. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- `encodeddata`: contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+    You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`clientid`**: the app client ID. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- `authparameters`: the authentication parameters. These are inputs corresponding to the *authflow* that you are invoking. The required values depend on the value of *authflow*. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- `clientmetadata`: a map of custom key-value pairs that you can provide as input for certain custom workflows that this action triggers. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- `analyticsendpointid`: the Amazon Pinpoint analytics metadata for collecting metrics for InitiateAuth calls. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- `encodeddata`: contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The action returns a JSON result:
 
@@ -622,9 +622,9 @@ The matching is case insensitive and can appear anywhere within the sentence
 aws cognito user login: clientid=`<clientid>` username=`<username>` password=`<password>`
 ```
 
-- **`clientid`**: the app client ID. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`username`**: user name. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
-- **`password`**: user password. You can use an [Intrinsic expression](#intrinsic_expression.md) for this parameter.
+- **`clientid`**: the app client ID. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`username`**: user name. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`password`**: user password. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
 
 The action returns a JSON result:
 

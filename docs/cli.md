@@ -135,3 +135,11 @@ Phobo supports the following option flags:
     ```shell
     phobo.exe myfeature.feature --attach-dbg --port 7899
     ```
+
+- **--r,--rollback \<rollback log file>**:
+
+    Specify the rollback log file to use for rollback or cleanup of resources.
+
+    ```shell
+    phobo.exe --rollback logs/rollback_2012_04_11_2
+    ```

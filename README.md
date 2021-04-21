@@ -23,6 +23,7 @@ Phobo is a standalone executable that can be run from the command line and it wi
     - [Templates](docs/templates.md)
     - [Tags](#tags)
     - [Debugging](#debugging)
+    - [Rollback](#rollback)
 
 ---
 
@@ -94,3 +95,17 @@ Phobo supports a few special tags that are reserved by Phobo. These tags will ha
 # Debugging
 
 Phobo can be set to run in debug mode, which can be useful for inspecting variables and stepping through code. See [here](docs/debugging.md) for more information.
+
+# Rollback
+
+Certain actions can create resources for example AWS actions can create S3 buckets, cognito user pools, etc. and Phobo keeps track of all the actions that creates some form of persistent resources.
+You might be interested in removing or cleaning up these resources once your feature file has finished executing and as such the rollback feature of Phobo can help you do exactly that.
+
+Imagine you are writing a feature file that creates several AWS cognito user pools and users, but you either forgot to include actions to remove those userpools and users at the end of the test, or the test might be interrupted prematurely and never gets to the part that removes the resources.
+Now Phobo will keep a log file for each scenario that is executed and writes an entry in the log for those actions that creates a resource. So even if Phobo terminates prematurely or is interrupted the logs are still there. Think of these logs as kind of a transaction logs.
+
+You can then run Phobo with the flag `--rollback` or `--r` and specify the rollback log file you wish to use for the cleanup.
+
+Example:
+
+> phobo.exe --rollback logs/rollback_2021_11_03

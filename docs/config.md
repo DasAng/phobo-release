@@ -33,7 +33,8 @@ The configuration file is a JSON file with the following structure:
    "debugger": {
       "address": "ws://localhost",
       "port": 7489
-   }
+   },
+   "rollbackLogDir": "logs"
 }
 ```
 
@@ -85,3 +86,7 @@ The configuration file is a JSON file with the following structure:
 - debugger.port:
 
    This is the port number of the debugger server to connect to if running in debug mode.
+
+- rollbackLogDir:
+
+   The directory to store rollback logs. These logs can be used to rollback or cleanup resources created by actions. For example AWS actions that creates resources will be logged and you can later run Phobo with the **phobo.exe --rollback logs/rollback_2021_04_11_2** flag and specify the rollback file to cleanup created resources.

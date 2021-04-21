@@ -81,6 +81,7 @@ This is a comprehensive list of actions offered by Phobo.
 - [Set environment variable](misc_actions.md#set-environment-variable)
 - [Export](misc_actions.md#export)
 - [Get environment variable](misc_actions.md#get-environment-variable)
+- [Variable](misc_actions.md#variable)
 
 # Conditional actions
 
@@ -89,3 +90,10 @@ This is a comprehensive list of actions offered by Phobo.
 # Match actions
 
 - [Match result](match_actions.md#match-result)
+
+# Request actions
+
+- [Http request](request_actions.md#http-request)
+- [Http request with body](request_actions.md#http-request-with-body)
+- [Http status](request_actions.md#http-status)
+- [Http ok](request_actions.md#http-ok)
