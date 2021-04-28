@@ -32,9 +32,9 @@ Phobo is a standalone executable that can be run from the command line and it wi
 
 Phobo is available as a standalone executable for the following platforms:
 
-- Windows
-- Linux
-- Mac
+- Windows ([latest binary](https://github.com/DasAng/phobo-release/releases/latest/download/phobo.exe))
+- Linux ([latest binary](https://github.com/DasAng/phobo-release/releases/latest/download/phobo))
+- Mac ([latest binary](https://github.com/DasAng/phobo-release/releases/latest/download/phobo-macos))
 
 # Application usage
 
