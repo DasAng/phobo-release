@@ -64,10 +64,16 @@ This is a comprehensive list of actions offered by Phobo.
 - [Set user password](aws_cognito_actions.md#set-user-password)
 - [Initiate auth](aws_cognito_actions.md#initiate-auth)
 - [User login](aws_cognito_actions.md#user-login)
+- [Get id](aws_cognito_actions.md#get-id)
+- [Get OpenId token](aws_cognito_actions.md#get-openid-token)
 
 **DynamoDB**
 
 - [SQL query](aws_dynamodb_actions.md#sql-query)
+
+**STS**
+
+- [Assume role with web identity](aws_sts_actions.md#assume-role-with-web-identity)
 
 # JMESPath actions
 
@@ -82,10 +88,12 @@ This is a comprehensive list of actions offered by Phobo.
 - [Export](misc_actions.md#export)
 - [Get environment variable](misc_actions.md#get-environment-variable)
 - [Variable](misc_actions.md#variable)
+- [Var](misc_actions.md#var)
 
 # Conditional actions
 
 - [Repeat until](condition_actions.md#repeat-until)
+- [Repeat for each](condition_actions.md#repeat-for-each)
 
 # Match actions
 

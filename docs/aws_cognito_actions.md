@@ -8,6 +8,8 @@
 - [Set user password](#set-user-password)
 - [Initiate auth](#initiate-auth)
 - [User login](#user-login)
+- [Get id](#get-id)
+- [Get OpenId token](#get-openid-token)
 
 ---
 
@@ -659,3 +661,104 @@ Example of usage:
 References:
 
 [InitiateAuth](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html)
+
+## Get id
+
+This action will generate or retrieve the identity id for a linked cognito user pool.
+
+`Regex`:
+
+```shell
+/aws cognito get id: identitypoolid=`([^`]+)` accountid=`([^`]+)` login=`([^`]+)` idtoken=`([^`]+)`/i
+```
+
+`match signature`:
+
+The matching is case insensitive and can appear anywhere within the sentence
+
+```shell
+aws cognito get id: identitypoolid=`<identitypoolid>` accountid=`<accouuntid>` login=`<login>` idtoken=`<idtoken>`
+```
+
+- **`identitypoolid`**: the app identity pool id. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`accouuntid`**: the aws account id. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`login`**: A set of optional name-value pairs that map provider names to provider tokens. The available provider names for Logins are as follows:
+
+    - Facebook: graph.facebook.com
+
+    - Amazon Cognito user pool: cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>, for example, cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789.
+
+    - Google: accounts.google.com
+
+    - Amazon: www.amazon.com
+
+    - Twitter: api.twitter.com
+
+    - Digits: www.digits.com.
+    
+    You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+
+- **`idtoken`**: the id token. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+
+The action returns a JSON result:
+
+```json
+{
+   "IdentityId": "string"
+}
+```
+
+Example of usage:
+
+- get identity id for the identity pool *eu_adwxq12d2*
+
+    > `` aws cognito get id: identitypoolid=`eu_adwxq12d2` accountid=`123456` login=`cognito-idp.eu-central-1.amazonaws.com/<$env.USER_POOL_ID$>` idtoken=`zxsaffcwefgbfvadwadaxwxax` ``
+
+
+References:
+
+[GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
+
+## Get OpenId token
+
+This action gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by [GetId](#get-id) action.
+
+`Regex`:
+
+```shell
+/aws cognito get openid token: identityid=`([^`]+)` login=`([^`]+)` idtoken=`([^`]+)`/i
+```
+
+`match signature`:
+
+The matching is case insensitive and can appear anywhere within the sentence
+
+```shell
+aws cognito get openid token: identityid=`<identityid>` login=`<login>` idtoken=`<idtoken>`
+```
+
+- **`identityid`**: a unique identifier in the format REGION:GUID. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`idtoken`**: the aws account id. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+- **`login`**: a set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any other OpenID Connect provider, always include the **idtoken**. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+
+- **`idtoken`**: the id token. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+
+The action returns a JSON result:
+
+```json
+{
+   "IdentityId": "string",
+   "Token": "string"
+}
+```
+
+Example of usage:
+
+- get OpenID token for OpenID connect provider
+
+    > `` aws cognito get openid token: identityid=`eu-central-1:234sxx2-22s2-xsds` login=`cognito-idp.eu-central-1.amazonaws.com/<$env.USER_POOL_ID$>` idtoken=`swswaaxxw23dax2` ``
+
+
+References:
+
+[GetOpenIdToken](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetOpenIdToken.html)
