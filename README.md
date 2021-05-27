@@ -25,6 +25,9 @@ Phobo is a standalone executable that can be run from the command line and it wi
     - [Tags](#tags)
     - [Debugging](#debugging)
     - [Rollback](#rollback)
+    - [Gherkin language extension](#gherkin-language-extension)
+        - [Continue](#continue)
+        - [Not](#not)
 
 ---
 
@@ -110,3 +113,29 @@ You can then run Phobo with the flag `--rollback` or `--r` and specify the rollb
 Example:
 
 > phobo.exe --rollback logs/rollback_2021_11_03
+
+# Gherkin language extension
+
+Phobo extends the Gherkin language syntax by supporting additional steps keywords. The following keywords can be used with Phobo:
+
+- Continue
+- Not
+
+
+### Continue
+
+When using this step keyword it will instruct Phobo to ignore any excpetions that might occur from the action performed. The action will pass even if an exception occurred. For example you don't care about if an exception throws when you try to call an API that does not exists:
+
+```gherkin
+Scenario: Ignore exception
+    Continue http get https://nonexeistingapi/api/
+```
+
+### Not
+
+This keyword will instruct Phobo to fail the step if the performed action does not throw an exception. This can be thouhgt of as a reverse assertion and can be used to expect that an exception will be thrown. For example this scenario test that calling a non existing api should throw an exception, and the test should pass.
+
+```gherkin
+Scenario: Expect exception
+    Not http get https://nonexeistingapi/api/
+```
