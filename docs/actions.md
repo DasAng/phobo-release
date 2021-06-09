@@ -30,6 +30,7 @@ This is a comprehensive list of actions offered by Phobo.
  - [Page clear localstorage](browser_actions.md#page-clear-localstorage)
  - [Page delete cookie](browser_actions.md#page-delete-cookie)
  - [Page set value](browser_actions.md#page-set-value)
+ - [Page save content](browser_actions.md#page-save-content)
 
 
 # AWS actions
@@ -74,6 +75,8 @@ This is a comprehensive list of actions offered by Phobo.
 **STS**
 
 - [Assume role with web identity](aws_sts_actions.md#assume-role-with-web-identity)
+- [Get caller identity](aws_sts_actions.md#get-caller-identity)
+- [Get account id](aws_sts_actions.md#get-account-id)
 
 # JMESPath actions
 

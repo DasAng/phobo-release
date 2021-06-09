@@ -1,6 +1,8 @@
 # AWS STS actions
 
 - [Assume role with web identity](#assume-role-with-web-identity)
+- [Get caller identity](#get-caller-identity)
+- [Get account id](#get-account-id)
 
 ---
 
@@ -58,3 +60,69 @@ Example of usage:
 References:
 
 [AssumeRoleWithWebIdentity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
+
+## Get caller identity
+
+This action will Returns details about the IAM user or role whose credentials are used to call the operation.
+
+`Regex`:
+
+```shell
+/aws sts get caller identity/i
+```
+
+`match signature`:
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+```shell
+aws sts get caller identity
+```
+The reponse JSON will have the following structure:
+
+```json
+{
+    "UserId": "AIDASAMPLEUSERID",
+    "Account": "123456789012",
+    "Arn": "arn:aws:iam::123456789012:user/DevAdmin"
+}
+```
+
+Example of usage:
+
+- get identity of current IAM user
+
+    > ``aws sts get caller identity ``
+
+References:
+
+[GetCallerIdentity](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html)
+
+## Get account id
+
+This action will return the AWS Account Id
+
+`Regex`:
+
+```shell
+/aws sts get account id/i
+```
+
+`match signature`:
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+```shell
+aws sts get account id
+```
+The reponse is a string containing the account id
+
+```json
+"123456789012"
+```
+
+Example of usage:
+
+- get current AWS account id
+
+    > ``aws sts get account id ``

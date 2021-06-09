@@ -24,6 +24,7 @@
  - [Page clear localstorage](#page-clear-localstorage)
  - [Page delete cookie](#page-delete-cookie)
  - [Page set value](#page-set-value)
+ - [Page save content](#page-save-content)
 
 ---
 
@@ -298,7 +299,7 @@ This action expects a page has been loaded and exist otherwise it will fail.
 page type "<text>" <query>
 ```
 
-- `<text>`: the text value to enter
+- `<text>`: the text value to enter. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter
 - `<query>`: an XPATH query string
 
 The matching is case insensitive and can appear anywhere within the sentence.
@@ -748,3 +749,31 @@ Example of usage:
 - Set the value *hello world* into an input element
 
     > `page set value "hello world" //*input[@id='myinput']`
+
+## Page save content
+
+This action will save the HTML content of the page to a file on disk.
+
+This action expects a page has been loaded and exist otherwise it will fail.
+
+`Regex`:
+
+```shell
+/page save cotnent (.+)/i
+```
+
+`match signature`:
+
+```shell
+page save content <filePath>
+```
+
+- `<filePath>`: the file to save on disk. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+Example of usage:
+
+- Saves the HTML content of the page to a file named myfile.html
+
+    > `page save content myfile.html`
