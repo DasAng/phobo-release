@@ -8,6 +8,8 @@ Phobo is a standalone executable that can be run from the command line and it wi
 
 # Documentation
 
+This documentation applies to the latest Phobo version 0.12.0
+
 - [Install](#install)
 - [Application usage](#application-usage)
     - [CLI](docs/cli.md)
