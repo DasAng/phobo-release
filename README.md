@@ -30,6 +30,7 @@ This documentation applies to the latest Phobo version 0.12.0
     - [Gherkin language extension](#gherkin-language-extension)
         - [Continue](#continue)
         - [Not](#not)
+- [Visual Studio Code extension](#visual-studio-code-extension)
 
 ---
 
@@ -141,3 +142,12 @@ This keyword will instruct Phobo to fail the step if the performed action does n
 Scenario: Expect exception
     Not http get https://nonexeistingapi/api/
 ```
+
+# Visual Studio Code Extension
+
+The official Visual Studio Code extension can be found below which can help you write feature files supported by Phobo.
+
+
+|Name|Language|Description
+--- | --- | ---
+| [phobo-vscode](https://marketplace.visualstudio.com/items?itemName=dasang.phobo-vscode&ssr=false#overview) | Typescript | A visual studio code extension that allows debugging Phobo and intellisense support
