@@ -7,6 +7,7 @@
 - [Get environment variable](misc_actions.md#get-environment-variable)
 - [Variable](#variable)
 - [Var](#var)
+- [Copy to clipboard](#copy-to-clipboard)
 
 ---
 
@@ -257,3 +258,32 @@ Example of usage:
 - Create a variable named *todos* with an array of *["shopping", "studying"]*
 
     > ``var todos=["shopping","studying"] `` 
+
+
+## Copy to clipboard
+
+This action will copy the specified text value to the clipboard
+
+`Regex`:
+
+```shell
+/copy to clipboard value=`([^`]+)`/i
+```
+
+`match signature`:
+
+The matching is case insensitive and must appear at the beginning.
+
+```shell
+copy to clipboard value=`<value>`
+```
+
+- **`value`**: value to copy to clipboard. You can use an [Intrinsic expression](intrinsic_expression.md) for this parameter.
+
+The result of the action is the copied value.
+
+Example of usage:
+
+- Copy the value "hello" to the clipboard
+
+    > ``copy to clipboard value=`hello` ``

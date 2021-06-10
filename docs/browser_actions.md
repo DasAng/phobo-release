@@ -25,6 +25,9 @@
  - [Page delete cookie](#page-delete-cookie)
  - [Page set value](#page-set-value)
  - [Page save content](#page-save-content)
+ - [Page iframe click](#page-ifram-click)
+ - [Page iframe query](#page-ifram-query)
+ - [Page iframe value query](#page-ifram-value-query)
 
 ---
 
@@ -777,3 +780,105 @@ Example of usage:
 - Saves the HTML content of the page to a file named myfile.html
 
     > `page save content myfile.html`
+
+
+## Page iframe click
+
+This action will click on any element specified on the iframe. It can be used for example to click on a button inside an iframe.
+The element to click on is specified using XPATH expression. If the element is not found this action will fail.
+
+This action expects a page has been loaded and exist otherwise it will fail.
+
+
+`Regex`:
+
+```shell
+/page iframe=`([^`]+)` click (.+)/i
+```
+
+`match signature`:
+
+```shell
+page iframe=`<iframeQuery>` click <query>
+```
+
+- `<iframeQuery>`: a CSS query string to find the iframe
+- `<query>`: an XPATH query string
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+Example of usage:
+
+- Click on a button inside the iframe with id "frame-epv":
+
+    > `page iframe=`iframe[id="frame-epv"]` click //*button[@id='mybutton']`
+
+
+## Page iframe query
+
+This action will find the specified element or elements inside an iframe.
+
+The can be used if for example you want to find certain elements inside an iframe. The items found will be saved in an internal list of queried items and can be used by other actions to check on them.
+
+Items found will also be displayed in the HTML report.
+
+This action expects a page has been loaded and exist otherwise it will fail.
+
+`Regex`:
+
+```shell
+/page iframe=`([^`]+)` query (.+)/i
+```
+
+`match signature`:
+
+```shell
+page iframe=`<iframeQuery>` query <query>
+```
+
+- `<iframeQuery>`: a CSS query string to find the iframe
+- `<query>`: an XPATH query string
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+Example of usage:
+
+- Find all elements inside the iframe with id "frame-epv"
+
+    > `page iframe=`iframe[id="frame-epv"]` query /li/ul`
+
+
+## Page iframe value query
+
+This action will find the specified element or elements inside an iframe.
+
+The can be used if for example you want to find certain elements inside an iframe. The items found will be saved in an internal list of queried items and can be used by other actions to check on them.
+
+Items found will also be displayed in the HTML report.
+
+The text values of the found items will be returned.
+
+This action expects a page has been loaded and exist otherwise it will fail.
+
+`Regex`:
+
+```shell
+/page iframe=`([^`]+)` value query (.+)/i
+```
+
+`match signature`:
+
+```shell
+page iframe=`<iframeQuery>` value query <query>
+```
+
+- `<iframeQuery>`: a CSS query string to find the iframe
+- `<query>`: an XPATH query string
+
+The matching is case insensitive and can appear anywhere within the sentence.
+
+Example of usage:
+
+- Find all elements inside the iframe with id "frame-epv"
+
+    > `page iframe=`iframe[id="frame-epv"]` query /li/ul`

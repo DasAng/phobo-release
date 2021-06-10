@@ -31,6 +31,9 @@ This is a comprehensive list of actions offered by Phobo.
  - [Page delete cookie](browser_actions.md#page-delete-cookie)
  - [Page set value](browser_actions.md#page-set-value)
  - [Page save content](browser_actions.md#page-save-content)
+ - [Page iframe click](browser_actions.md#page-ifram-click)
+ - [Page iframe query](browser_actions.md#page-ifram-query)
+ - [Page iframe value query](browser_actions.md#page-ifram-value-query)
 
 
 # AWS actions
@@ -92,6 +95,7 @@ This is a comprehensive list of actions offered by Phobo.
 - [Get environment variable](misc_actions.md#get-environment-variable)
 - [Variable](misc_actions.md#variable)
 - [Var](misc_actions.md#var)
+- [Copy to clipboard](misc_actions.md#copy-to-clipboard)
 
 # Conditional actions
 
