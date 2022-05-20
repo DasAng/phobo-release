@@ -1,7 +1,7 @@
 ![Phobo](docs/phobo.png)
 # Phobo
 
-**Phobo** is a tool that extends the Gherkin language to write BDD scenarios using a selection of predefined actions. For example you can use Phobo to automate the browser, calling AWS services, perform HTTP requests and many others.
+**Phobo** is a tool that extends the Gherkin language to write BDD scenarios using a selection of predefined actions. For example you can use Phobo to automate the browser, calling AWS services, perform HTTP requests and many others without having to write any traditional programming language. Write your BDD gherkin features and let Phobo execute the feature file.
 
 Phobo is a standalone executable that can be run from the command line and it will generate a HTML report of the executed tests.
 
