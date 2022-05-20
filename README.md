@@ -1,8 +1,7 @@
 ![Phobo](docs/phobo.png)
 # Phobo
 
-**Phobo** is a tool for running automated tests written in plain language. By writing tests in a natural language it is much easier to read and understand.
-It will help improve collaboration on the test and make it much easier to communicate the test to other people.
+**Phobo** is a tool that extends the Gherkin language to write BDD scenarios using a selection of predefined actions. For example you can use Phobo to automate the browser, calling AWS services, perform HTTP requests and many others.
 
 Phobo is a standalone executable that can be run from the command line and it will generate a HTML report of the executed tests.
 
